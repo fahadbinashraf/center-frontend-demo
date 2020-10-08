@@ -1,14 +1,290 @@
 /* General styles */
 
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-  display: none !important;
+    display: none !important;
 }
 
 html {
-  font-family: "Nunito", sans-serif;
-  line-height: 1;
-  color: #333;
-  text-rendering: optimizeLegibility;
+    font-family: "Nunito", sans-serif;
+    line-height: 1;
+    color: #333;
+    text-rendering: optimizeLegibility;
 }
 
 /* Add your CSS here */
+
+body {
+    margin: 0;
+    box-sizing: border-box;
+    width: 100%;
+    background-color: #f7f7f7;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer
+}
+
+.clear:after{
+    content: ''
+}
+
+.clear:after {
+    display: block;
+    clear: both
+}
+
+header {
+    color: #fff;
+    background-image: linear-gradient(to bottom, #0af, #acfffd 200px)
+}
+
+header .inner-container {
+    padding: 20px 40px;
+    transition: all .2s;
+}
+
+#nav-icon {
+    position: absolute;
+    display: block;
+    cursor: pointer;
+    top: -4px;
+    left: -60px;
+    height: 40px;
+    width: 40px;
+    background-image: url(assets/images/icon-80x80-light.png);
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    transition: all .2s;
+}
+
+#page-title {
+    font-size: 32px;
+    font-weight: 400;
+    margin-top: 10px;
+    padding-left: 20px;
+    margin-left: -23px;
+    display: inline-block;
+    border-left: 1px solid rgba(255, 255, 255, .2);
+    position: relative;
+}
+
+#app-container {
+    padding: 35px 40px 30px;
+    background-color: #f7f7f7;
+    box-sizing: border-box;
+    /*box-shadow: 0 0 30px rgba(0, 0, 0, .1)*/
+}
+
+#app-container {
+    min-height: calc(100% - 125px);
+}
+
+#ui-view-container, .inner-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    transition: max-width .2s;
+}
+
+.period-select-component {
+    color: #333;
+    z-index: 9999;
+    position: relative;
+    height: 70px;
+    margin-bottom: 15px;
+}
+
+.period-select-component .period-select-component-container {
+    background-color: #f7f7f7;
+    width: 100%;
+    box-shadow: 0 2px 4px transparent;
+    box-sizing: border-box;
+}
+
+.period-select-component .current-period {
+    float: left;
+    margin-top: 8px;
+    color: #656b73;
+    font-size: 28px;
+    width: 290px;
+    margin-right: 10px;
+}
+
+.period-select-component .period-shift {
+    float: left;
+    margin-top: -5px;
+}
+
+.period-select-component .next-period, .period-select-component .prev-period {
+    position: relative;
+    float: left;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: block;
+    transition: background-color .2s;
+}
+
+.period-select-component .prev-period {
+    margin-right: 5px;
+}
+
+.period-select-component .next-period:before, .period-select-component .prev-period:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 20px;
+    width: 20px;
+    margin-top: -10px;
+    margin-left: -10px;
+    background-image: url(assets/images/arrow-sprite.png);
+    background-repeat: no-repeat;
+    background-size: 20px auto;
+    opacity: .25;
+}
+
+.period-select-component .next-period:before {
+    background-position: left -20px;
+}
+
+.period-select-component .prev-period:before {
+    background-position: left -60px;
+}
+
+.prev-period:hover, .next-period:hover{
+    background-color: rgba(0, 0, 0, .1);
+}
+
+section{
+    display: block;
+}
+
+.stat-container{
+    margin-left: -10px;
+    width: calc(100% + 20px);
+    display: block;
+}
+
+.stat-component{
+    float: left;
+    width: calc(33.333% - 20px);
+    margin: 0 10px 20px;
+    padding: 10px 12px;
+    color: #656b73;
+    text-align: right;
+    position: relative;
+    height: 115px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-sizing: border-box;
+    box-shadow: 0 2px 4px rgba(0,0,0,.15);
+}
+
+.stat-title {
+    font-size: 17px;
+    font-weight: 600;
+    padding-top: 1px;
+    padding-left: 22px;
+    margin-bottom: 11px;
+    position: relative;
+    text-align: left;
+}
+
+.stat-title:before {
+    position: absolute;
+    top: -4px;
+    left: -6px;
+    opacity: .2;
+    background-size: 24px auto;
+    background-repeat: no-repeat;
+    background-image: url(assets/images/event-sprite.png);
+}
+.stat-title:before {
+    height: 24px;
+    width: 24px;
+    content: '';
+}
+
+.stat-value {
+    font-size: 40px;
+    display: inline-block;
+    position: relative;
+}
+
+.stat-value.warning:before {
+    background-color: #f39c12
+}
+
+.stat-value.alert:before {
+    background-color: #e74c3c
+}
+
+.stat-value.normal:before {
+    background-color: #1ab2ff
+}
+
+.stat-value.good:before {
+    background-color: #2ecc71
+}
+
+
+.stat-value.alert:before, .stat-value.good:before, .stat-value.normal:before, .stat-value.warning:before {
+    margin-top: -5px;
+    left: -20px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+.stat-value:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+}
+.stat-unit {
+    margin-left: 5px;
+}
+
+.stat-context, .stat-unit {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.stat-context {
+    color: #999ea5;
+    margin-top: 8px
+}
+
+.stat-context span {
+    font-weight: 800
+}
+
+.stat-context span.good {
+    color: #2ecc71
+}
+
+.stat-context span.warning {
+    color: #f39c12
+}
+
+.stat-context span.alert {
+    color: #e74c3c
+}
+
+.stat-context span.normal {
+    color: #1ab2ff
+}
+
+.stat-value.down-good:before {
+    background-size: 84px auto;
+    background-repeat: no-repeat;
+    background-image: url(assets/images/status-sprite.png);
+    width: 21px;
+    height: 25px;
+    top: 25%;
+    left: -40%;
+}
+.stat-value.down-good:before {
+    background-position: left -20px;
+}

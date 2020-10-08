@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  
+
   <title>Diabetes Mini-Dashboard</title>
 
   <!-- Application CSS Files -->
@@ -22,11 +22,70 @@
 
   <div ng-controller="appController as ctrl" ng-cloak>
 
-    <!--
-      ADD YOUR HTML HERE
-    -->
+   <header>
+     <div class="inner-container">
+       <div id="page-title">
+         <a href="#" id="nav-icon"></a>
+         Dashboard
+       </div>
+     </div>
+   </header>
 
-    {{ ctrl.helloWorld }}
+    <div id="app-container">
+      <div id="ui-view-container">
+        <section class="period-select-component">
+          <div class="period-select-component-container">
+            <div class="current-period ng-binding">Sun, 11 Oct 2020</div>
+              <div class="period-shift clear">
+                  <a class="prev-period " ng-click="updatePeriod({ action: 'prev' })"
+                      tooltip="Previous day" tooltip-pos="topleft"></a>
+                  <a class="next-period" ng-click="updatePeriod({ action: 'next' })"
+                      tooltip="Next day" tooltip-pos="topright"></a></div>
+          </div>
+        </section>
+          <section class="stat-container clear">
+              <section class="stat-component">
+                  <div class="stat-title">
+                      Total blood sugar events
+                  </div>
+                  <div class="stat-value normal">
+                      3
+                      <span class="stat-unit">events</span>
+                  </div>
+                  <div class="stat-context">
+                      Previous day –
+                      <span class="normal">3</span>
+                  </div>
+              </section>
+              <section class="stat-component">
+                  <div class="stat-title">
+                      Average blood sugar
+                  </div>
+                  <div class="stat-value icon down-good">
+                      3
+                      <span class="stat-unit">mg/dl</span>
+                  </div>
+                  <div class="stat-context">
+                      Previous day –
+                      <span class="warning">3</span>
+                  </div>
+              </section>
+              <section class="stat-component">
+                  <div class="stat-title">
+                      Events between 70 and 180
+                  </div>
+                  <div class="stat-value good">
+                      3
+                      <span class="stat-unit">%</span>
+                  </div>
+                  <div class="stat-context">
+                      Previous day –
+                      <span class="good">80%</span>
+                  </div>
+              </section>
+          </section>
+      </div>
+    </div>
 
   </div>
 
