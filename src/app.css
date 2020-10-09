@@ -25,7 +25,7 @@ a {
     cursor: pointer
 }
 
-.clear:after{
+.clear:after {
     content: ''
 }
 
@@ -153,21 +153,21 @@ header .inner-container {
     background-position: left -60px;
 }
 
-.prev-period:hover, .next-period:hover{
+.prev-period:hover, .next-period:hover {
     background-color: rgba(0, 0, 0, .1);
 }
 
-section{
+section {
     display: block;
 }
 
-.stat-container{
+.stat-container {
     margin-left: -10px;
     width: calc(100% + 20px);
     display: block;
 }
 
-.stat-component{
+.stat-component {
     float: left;
     width: calc(33.333% - 20px);
     margin: 0 10px 20px;
@@ -179,7 +179,7 @@ section{
     background-color: #fff;
     border-radius: 15px;
     box-sizing: border-box;
-    box-shadow: 0 2px 4px rgba(0,0,0,.15);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .15);
 }
 
 .stat-title {
@@ -201,6 +201,7 @@ section{
     background-repeat: no-repeat;
     background-image: url(assets/images/event-sprite.png);
 }
+
 .stat-title:before {
     height: 24px;
     width: 24px;
@@ -229,7 +230,6 @@ section{
     background-color: #2ecc71
 }
 
-
 .stat-value.alert:before, .stat-value.good:before, .stat-value.normal:before, .stat-value.warning:before {
     margin-top: -5px;
     left: -20px;
@@ -237,11 +237,13 @@ section{
     height: 8px;
     border-radius: 50%;
 }
+
 .stat-value:before {
     content: '';
     position: absolute;
     top: 50%;
 }
+
 .stat-unit {
     margin-left: 5px;
 }
@@ -285,6 +287,13 @@ section{
     top: 25%;
     left: -40%;
 }
+
 .stat-value.down-good:before {
     background-position: left -20px;
+}
+
+.stat-value.no-data {
+    font-size: 26px;
+    margin: 5px 0 9px;
+    color: #d3d7db;
 }

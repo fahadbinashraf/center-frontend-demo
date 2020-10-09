@@ -1,41 +1,18 @@
-<section class="stat-container clear">
-    <section class="stat-component">
+<section class="stat-container clear" >
+    <section class="stat-component" ng-repeat="item in $ctrl.events.stats">
         <div class="stat-title">
-            Total blood sugar events
+            {{item.title}}
         </div>
-        <div class="stat-value normal">
-            {{$ctrl.events.current_stats.total}}
-            <span class="stat-unit">events</span>
+        <div class="stat-value {{item.value_class}}" ng-show="item.value">
+            {{item.value}}
+            <span class="stat-unit">{{item.unit}}</span>
         </div>
-        <div class="stat-context" ng-show="$ctrl.events.prev_stats.total">
+        <div class="stat-value no-data" ng-show="!item.value">
+           Not enough events
+        </div>
+        <div class="stat-context" ng-show="item.context_value">
             Previous day –
-            <span class="normal">{{$ctrl.events.prev_stats.total}}</span>
-        </div>
-    </section>
-    <section class="stat-component">
-        <div class="stat-title">
-            Average blood sugar
-        </div>
-        <div class="stat-value icon down-good">
-            {{$ctrl.events.current_stats.avg}}
-            <span class="stat-unit">mg/dl</span>
-        </div>
-        <div class="stat-context" ng-show="$ctrl.events.prev_stats.avg">
-            Previous day –
-            <span class="warning">{{$ctrl.events.prev_stats.avg}}</span>
-        </div>
-    </section>
-    <section class="stat-component">
-        <div class="stat-title">
-            Events between 70 and 180
-        </div>
-        <div class="stat-value good">
-            {{$ctrl.events.current_stats.events_between_70_and_180}}
-            <span class="stat-unit">%</span>
-        </div>
-        <div class="stat-context" ng-show="$ctrl.events.prev_stats.events_between_70_and_180">
-            Previous day –
-            <span class="good">{{$ctrl.events.prev_stats.events_between_70_and_180}}%</span>
+            <span class="{{item.context_class}}">{{item.context_value}}</span>
         </div>
     </section>
 </section>
