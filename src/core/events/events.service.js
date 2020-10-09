@@ -17,30 +17,48 @@ angular.module('events').factory('Events', function () {
     var events = {};
 
     events.updateStats = function (period) {
-        events.current_events = DEMO_EVENTS.filter(
+        var current_events = DEMO_EVENTS.filter(
             item => item.time.isSame(period, 'day'));
 
-        events.prev_events = DEMO_EVENTS.filter(
+        var prev_events = DEMO_EVENTS.filter(
             item => item.time.isSame(moment(period).subtract(1, 'day'), 'day'));
 
-        events.next_events = DEMO_EVENTS.filter(
-            item => item.time.isSame(moment(period).add(1, 'day'), 'day'));
 
-        events.current_stats = calculateStats(events.current_events);
-        events.prev_stats = calculateStats(events.prev_events);
+        events.stats = calculateStats(current_events, prev_events);
     };
 
-    function calculateStats(events){
-        var stats = {};
-        if(events.length > 0){
-            stats.total = events.length;
-            stats.avg = events.length > 0 ? (events.reduce(function (accumulator, current_value){
+    function calculateStats(events, prev_events){
+        var stats = [];
+        stats.push({
+            title: "Total blood sugar events",
+            value:  events.length > 0 ? events.length : undefined,
+            value_class: "normal",
+            unit: "events",
+            context_value: prev_events.length > 0 ? prev_events.length :undefined,
+            context_class: "normal"
+        });
+        stats.push({
+            title: "Average blood sugar",
+            value: events.length > 0 ? (events.reduce(function (accumulator, current_value){
                 return accumulator + current_value.value
-            }, 0) / stats.total).toFixed(0) : 0;
-
-            stats.events_between_70_and_180 = (events.filter(item =>
-                item.value >= 70 && item.value <= 180).length * 100 / stats.total).toFixed(0);
-        }
+            }, 0) / events.length).toFixed(0) : undefined,
+            value_class: "normal",
+            unit: "mg/dl",
+            context_value: prev_events.length > 0 ? (prev_events.reduce(function (accumulator, current_value){
+                return accumulator + current_value.value
+            }, 0) / prev_events.length).toFixed(0) : undefined,
+            context_class: "warning"
+        });
+        stats.push({
+            title: "Events between 70 and 180",
+            value: events.length > 0 ? (events.filter(function(item) {
+                return item.value >= 70 && item.value <= 180}).length * 100 / events.length).toFixed(0) : undefined,
+            value_class: "good",
+            unit: "%",
+            context_value: prev_events.length > 0 ? (prev_events.filter(function(item) {
+                return item.value >= 70 && item.value <= 180}).length * 100 / prev_events.length).toFixed(0) + '%' : undefined,
+            context_class: "good"
+        });
         return stats;
     }
 

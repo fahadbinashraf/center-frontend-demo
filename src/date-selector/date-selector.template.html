@@ -2,7 +2,7 @@
     <div class="period-select-component-container">
         <div class="current-period">{{$ctrl.period.format("ddd, D MMM YYYY")}}</div>
         <div class="period-shift clear">
-            <a class="prev-period" ng-show="$ctrl.events.prev_events.length > 0" ng-click="$ctrl.updatePeriod({action: 'prev'})"></a>
-            <a class="next-period" ng-show="$ctrl.events.next_events.length > 0" ng-click="$ctrl.updatePeriod({action: 'next'})"></a></div>
+            <a class="prev-period" ng-click="$ctrl.updatePeriod({action: 'prev'})"></a>
+            <a class="next-period" ng-click="$ctrl.updatePeriod({action: 'next'})"></a></div>
     </div>
 </section>
